@@ -8,6 +8,10 @@
 #include <netinet/in.h>
 #include <unistd.h>
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 // 保存所有已连接的客户端socket
 std::vector<int> clients;
 // 保护clients的互斥锁，保证多线程安全
@@ -37,6 +41,10 @@ void handle_client(int client_fd) {
 }
 
 int main() {
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+#endif
     // 创建socket，AF_INET表示IPv4，SOCK_STREAM表示TCP
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (server_fd == -1) {

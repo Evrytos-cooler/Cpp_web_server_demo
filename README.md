@@ -20,7 +20,7 @@
 ### 编译与运行
 
 ```sh
-cd demo1_socket_webserver
+cd Cdemo/demo1_socket_webserver
 make
 ./webserver
 ```
@@ -39,7 +39,7 @@ make
 ### 编译与运行
 
 ```sh
-cd demo2_mq
+cd Cdemo/demo2_mq
 make
 # 启动服务器
 ./server
@@ -63,7 +63,7 @@ make
 ### 编译与运行
 
 ```sh
-cd demo3_httplib_rest
+cd Cdemo/demo3_httplib_rest
 make
 ./rest_server
 ```

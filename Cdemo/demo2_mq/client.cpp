@@ -6,6 +6,10 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 void recv_thread(int sockfd) {
     char buffer[1024];
     while (true) {
@@ -17,6 +21,10 @@ void recv_thread(int sockfd) {
 }
 
 int main() {
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+#endif
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
         perror("socket");
