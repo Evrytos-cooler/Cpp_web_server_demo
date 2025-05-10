@@ -1,78 +1,75 @@
-# C++ Demo 项目
+# C++ Web服务器示例项目
 
-本项目包含三个 C++示例，适合 C++初学者学习网络编程和 RESTful 服务。
+这个仓库包含了一系列使用C++实现的Web服务器示例项目，每个demo都展示了不同的功能和实现方式。
 
-## 目录结构
+## 项目列表
 
-- demo1_socket_webserver —— 基于 socket 的简单 Web 服务器
-- demo2_mq —— 消息中间件服务器与客户端
-- demo3_httplib_rest —— 使用 cpp-httplib 的 RESTful 服务器
+### demo1: 基础HTTP服务器
+- 实现基本的HTTP/1.1协议
+- 支持GET请求
+- 支持静态文件服务
+- 支持目录浏览
+- 支持MIME类型
 
----
+### demo2: 多线程服务器
+- 基于demo1的功能
+- 使用线程池处理请求
+- 支持并发连接
+- 实现请求队列
+- 可配置的线程数量
 
-## 1. demo1_socket_webserver
+### demo3: 异步IO服务器
+- 基于demo2的功能
+- 使用epoll/kqueue实现异步IO
+- 支持长连接
+- 支持WebSocket
+- 实现事件驱动模型
 
-### 功能
+### demo4: 文件传输工具
+- 基于TCP协议的文件传输
+- 支持文件上传和下载
+- 支持断点续传
+- 支持MD5完整性校验
+- 自定义协议处理数据包
+- 支持Windows和Linux平台
+- 实时显示传输进度和速度
 
-- 监听 8080 端口，接收浏览器请求并打印请求内容。
-- 返回一段 HTML 页面。
+> 注：demo4在开发过程中使用了AI辅助工具（Cursor IDE的AI助手）来帮助学习和编程，因为我对C++语法和网络编程不太熟悉。通过AI辅助开发，不仅完成了项目，还学习到了很多C++和网络编程的知识。
 
-### 编译与运行
+## 开发环境
 
-```sh
-cd Cdemo/demo1_socket_webserver
-make
-./webserver
-```
+- 操作系统：Windows/Linux
+- 编译器：GCC/Clang/MSVC
+- 构建工具：CMake
+- 依赖库：
+  - OpenSSL
+  - zlib
+  - pthread
 
-浏览器访问：http://localhost:8080
+## 编译和运行
 
----
+每个demo都有独立的目录，包含自己的CMakeLists.txt和README.md文件。请参考各个demo目录下的README.md获取具体的编译和运行说明。
 
-## 2. demo2_mq
+## 学习路线
 
-### 功能
+建议按照demo1到demo4的顺序学习，每个demo都建立在前一个demo的基础上，逐步引入新的概念和技术：
 
-- 服务器监听 9000 端口，支持多个客户端连接。
-- 任一客户端发消息，服务器转发给其他客户端。
+1. demo1: 学习基本的HTTP协议和服务器实现
+2. demo2: 学习多线程编程和并发处理
+3. demo3: 学习异步IO和事件驱动编程
+4. demo4: 学习TCP协议和文件传输
 
-### 编译与运行
+## 注意事项
 
-```sh
-cd Cdemo/demo2_mq
-make
-# 启动服务器
-./server
-# 新开多个终端，分别运行客户端
-./client
-```
+1. 这些示例主要用于学习目的，不建议直接用于生产环境
+2. 每个demo都包含详细的注释和文档
+3. 代码遵循C++17标准
+4. 使用CMake进行跨平台构建
 
-客户端输入消息后回车即可，输入 exit 退出。
+## 贡献
 
----
+欢迎提交Issue和Pull Request来改进这些示例。
 
-## 3. demo3_httplib_rest
+## 许可证
 
-### 功能
-
-- 使用[cpp-httplib](https://github.com/yhirose/cpp-httplib)和[nlohmann/json](https://github.com/nlohmann/json)实现 RESTful 服务。
-- 支持两个 GET 接口：
-  - `/hello?name=xxx` 返回带参数的 json
-  - `/query?name=xxx&age=yyy` 返回参数 json
-
-### 编译与运行
-
-```sh
-cd Cdemo/demo3_httplib_rest
-make
-./rest_server
-```
-
-浏览器访问：
-
-- http://localhost:8081/hello?name=张三
-- http://localhost:8081/query?name=李四&age=20
-
----
-
-如有问题欢迎提 issue。
+MIT License
